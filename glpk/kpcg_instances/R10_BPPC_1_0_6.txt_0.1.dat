@@ -1,5 +1,5 @@
 param n := 120;
-param c := 1500
+param c := 1500;
 param : V : p w :=
    0	  76	  26
    1	  42	  25
