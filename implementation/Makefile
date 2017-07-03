@@ -1,3 +1,3 @@
-# install:
-	# @pip install numpy
+install:
+	@pip install numpy
 
