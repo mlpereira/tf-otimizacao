@@ -1,0 +1,446 @@
+Problem:    formulacao
+Rows:       182
+Columns:    60 (60 integer, 60 binary)
+Non-zeros:  480
+Status:     INTEGER OPTIMAL
+Objective:  cost = 7776 (MAXimum)
+
+   No.   Row name        Activity     Lower bound   Upper bound
+------ ------------    ------------- ------------- -------------
+     1 cost                     7776                             
+     2 capacity                 7556                       10000 
+     3 conflict[0,2]
+                                   1                           1 
+     4 conflict[0,22]
+                                   1                           1 
+     5 conflict[0,26]
+                                   1                           1 
+     6 conflict[0,32]
+                                   1                           1 
+     7 conflict[0,34]
+                                   1                           1 
+     8 conflict[0,43]
+                                   1                           1 
+     9 conflict[0,55]
+                                   1                           1 
+    10 conflict[0,56]
+                                   1                           1 
+    11 conflict[1,17]
+                                   0                           1 
+    12 conflict[1,25]
+                                   1                           1 
+    13 conflict[1,35]
+                                   1                           1 
+    14 conflict[1,43]
+                                   0                           1 
+    15 conflict[1,46]
+                                   1                           1 
+    16 conflict[1,50]
+                                   0                           1 
+    17 conflict[1,52]
+                                   0                           1 
+    18 conflict[2,16]
+                                   1                           1 
+    19 conflict[2,20]
+                                   1                           1 
+    20 conflict[2,23]
+                                   0                           1 
+    21 conflict[2,36]
+                                   0                           1 
+    22 conflict[2,51]
+                                   1                           1 
+    23 conflict[2,59]
+                                   1                           1 
+    24 conflict[3,5]
+                                   0                           1 
+    25 conflict[3,9]
+                                   0                           1 
+    26 conflict[3,16]
+                                   1                           1 
+    27 conflict[3,19]
+                                   0                           1 
+    28 conflict[3,36]
+                                   0                           1 
+    29 conflict[3,51]
+                                   1                           1 
+    30 conflict[3,55]
+                                   0                           1 
+    31 conflict[4,5]
+                                   1                           1 
+    32 conflict[4,12]
+                                   1                           1 
+    33 conflict[4,14]
+                                   1                           1 
+    34 conflict[4,36]
+                                   1                           1 
+    35 conflict[5,13]
+                                   1                           1 
+    36 conflict[5,30]
+                                   1                           1 
+    37 conflict[5,32]
+                                   0                           1 
+    38 conflict[5,57]
+                                   0                           1 
+    39 conflict[6,18]
+                                   1                           1 
+    40 conflict[6,45]
+                                   1                           1 
+    41 conflict[6,54]
+                                   1                           1 
+    42 conflict[6,55]
+                                   1                           1 
+    43 conflict[7,17]
+                                   1                           1 
+    44 conflict[8,10]
+                                   1                           1 
+    45 conflict[8,27]
+                                   1                           1 
+    46 conflict[9,16]
+                                   1                           1 
+    47 conflict[9,32]
+                                   0                           1 
+    48 conflict[9,41]
+                                   1                           1 
+    49 conflict[10,18]
+                                   0                           1 
+    50 conflict[10,19]
+                                   0                           1 
+    51 conflict[10,49]
+                                   0                           1 
+    52 conflict[10,50]
+                                   0                           1 
+    53 conflict[10,54]
+                                   0                           1 
+    54 conflict[11,15]
+                                   0                           1 
+    55 conflict[11,16]
+                                   1                           1 
+    56 conflict[11,24]
+                                   1                           1 
+    57 conflict[11,42]
+                                   1                           1 
+    58 conflict[12,14]
+                                   0                           1 
+    59 conflict[12,19]
+                                   0                           1 
+    60 conflict[12,28]
+                                   0                           1 
+    61 conflict[12,30]
+                                   1                           1 
+    62 conflict[12,41]
+                                   1                           1 
+    63 conflict[12,45]
+                                   0                           1 
+    64 conflict[13,21]
+                                   1                           1 
+    65 conflict[13,27]
+                                   1                           1 
+    66 conflict[13,45]
+                                   1                           1 
+    67 conflict[14,25]
+                                   1                           1 
+    68 conflict[14,35]
+                                   1                           1 
+    69 conflict[14,39]
+                                   1                           1 
+    70 conflict[14,55]
+                                   0                           1 
+    71 conflict[15,24]
+                                   1                           1 
+    72 conflict[15,32]
+                                   0                           1 
+    73 conflict[15,40]
+                                   0                           1 
+    74 conflict[15,52]
+                                   0                           1 
+    75 conflict[16,19]
+                                   1                           1 
+    76 conflict[16,26]
+                                   1                           1 
+    77 conflict[16,49]
+                                   1                           1 
+    78 conflict[17,22]
+                                   0                           1 
+    79 conflict[17,27]
+                                   0                           1 
+    80 conflict[17,28]
+                                   0                           1 
+    81 conflict[17,46]
+                                   1                           1 
+    82 conflict[17,51]
+                                   1                           1 
+    83 conflict[17,53]
+                                   0                           1 
+    84 conflict[17,54]
+                                   0                           1 
+    85 conflict[17,56]
+                                   0                           1 
+    86 conflict[17,57]
+                                   0                           1 
+    87 conflict[18,30]
+                                   1                           1 
+    88 conflict[18,32]
+                                   0                           1 
+    89 conflict[18,43]
+                                   0                           1 
+    90 conflict[18,44]
+                                   0                           1 
+    91 conflict[18,59]
+                                   1                           1 
+    92 conflict[19,24]
+                                   1                           1 
+    93 conflict[19,35]
+                                   1                           1 
+    94 conflict[19,38]
+                                   0                           1 
+    95 conflict[19,39]
+                                   1                           1 
+    96 conflict[20,22]
+                                   1                           1 
+    97 conflict[20,37]
+                                   1                           1 
+    98 conflict[20,52]
+                                   1                           1 
+    99 conflict[20,55]
+                                   1                           1 
+   100 conflict[20,57]
+                                   1                           1 
+   101 conflict[21,30]
+                                   1                           1 
+   102 conflict[21,57]
+                                   0                           1 
+   103 conflict[22,33]
+                                   0                           1 
+   104 conflict[22,40]
+                                   0                           1 
+   105 conflict[22,46]
+                                   1                           1 
+   106 conflict[22,51]
+                                   1                           1 
+   107 conflict[22,55]
+                                   0                           1 
+   108 conflict[22,57]
+                                   0                           1 
+   109 conflict[23,31]
+                                   1                           1 
+   110 conflict[24,52]
+                                   1                           1 
+   111 conflict[24,57]
+                                   1                           1 
+   112 conflict[25,29]
+                                   1                           1 
+   113 conflict[25,33]
+                                   1                           1 
+   114 conflict[25,53]
+                                   1                           1 
+   115 conflict[25,55]
+                                   1                           1 
+   116 conflict[26,29]
+                                   0                           1 
+   117 conflict[26,33]
+                                   0                           1 
+   118 conflict[26,37]
+                                   0                           1 
+   119 conflict[26,42]
+                                   1                           1 
+   120 conflict[26,45]
+                                   0                           1 
+   121 conflict[26,46]
+                                   1                           1 
+   122 conflict[26,48]
+                                   1                           1 
+   123 conflict[26,53]
+                                   0                           1 
+   124 conflict[27,42]
+                                   1                           1 
+   125 conflict[27,43]
+                                   0                           1 
+   126 conflict[27,49]
+                                   0                           1 
+   127 conflict[27,51]
+                                   1                           1 
+   128 conflict[27,59]
+                                   1                           1 
+   129 conflict[28,29]
+                                   0                           1 
+   130 conflict[28,51]
+                                   1                           1 
+   131 conflict[28,53]
+                                   0                           1 
+   132 conflict[28,57]
+                                   0                           1 
+   133 conflict[29,33]
+                                   0                           1 
+   134 conflict[29,36]
+                                   0                           1 
+   135 conflict[29,40]
+                                   0                           1 
+   136 conflict[29,59]
+                                   1                           1 
+   137 conflict[30,44]
+                                   1                           1 
+   138 conflict[31,34]
+                                   1                           1 
+   139 conflict[32,54]
+                                   0                           1 
+   140 conflict[32,55]
+                                   0                           1 
+   141 conflict[33,39]
+                                   1                           1 
+   142 conflict[33,42]
+                                   1                           1 
+   143 conflict[33,43]
+                                   0                           1 
+   144 conflict[33,58]
+                                   1                           1 
+   145 conflict[34,44]
+                                   0                           1 
+   146 conflict[34,48]
+                                   1                           1 
+   147 conflict[34,54]
+                                   0                           1 
+   148 conflict[35,36]
+                                   1                           1 
+   149 conflict[35,38]
+                                   1                           1 
+   150 conflict[35,40]
+                                   1                           1 
+   151 conflict[36,38]
+                                   0                           1 
+   152 conflict[36,45]
+                                   0                           1 
+   153 conflict[36,46]
+                                   1                           1 
+   154 conflict[36,47]
+                                   1                           1 
+   155 conflict[36,57]
+                                   0                           1 
+   156 conflict[37,40]
+                                   0                           1 
+   157 conflict[37,44]
+                                   0                           1 
+   158 conflict[37,48]
+                                   1                           1 
+   159 conflict[37,50]
+                                   0                           1 
+   160 conflict[38,48]
+                                   1                           1 
+   161 conflict[38,58]
+                                   1                           1 
+   162 conflict[39,50]
+                                   1                           1 
+   163 conflict[39,56]
+                                   1                           1 
+   164 conflict[40,53]
+                                   0                           1 
+   165 conflict[40,54]
+                                   0                           1 
+   166 conflict[40,59]
+                                   1                           1 
+   167 conflict[41,53]
+                                   1                           1 
+   168 conflict[41,54]
+                                   1                           1 
+   169 conflict[42,52]
+                                   1                           1 
+   170 conflict[43,58]
+                                   1                           1 
+   171 conflict[44,46]
+                                   1                           1 
+   172 conflict[44,58]
+                                   1                           1 
+   173 conflict[45,57]
+                                   0                           1 
+   174 conflict[46,50]
+                                   1                           1 
+   175 conflict[47,53]
+                                   1                           1 
+   176 conflict[48,49]
+                                   1                           1 
+   177 conflict[51,54]
+                                   1                           1 
+   178 conflict[51,56]
+                                   1                           1 
+   179 conflict[52,54]
+                                   0                           1 
+   180 conflict[54,55]
+                                   0                           1 
+   181 conflict[54,56]
+                                   0                           1 
+   182 conflict[54,58]
+                                   1                           1 
+
+   No. Column name       Activity     Lower bound   Upper bound
+------ ------------    ------------- ------------- -------------
+     1 x[0]         *              1             0             1 
+     2 x[1]         *              0             0             1 
+     3 x[2]         *              0             0             1 
+     4 x[3]         *              0             0             1 
+     5 x[4]         *              1             0             1 
+     6 x[5]         *              0             0             1 
+     7 x[6]         *              1             0             1 
+     8 x[7]         *              1             0             1 
+     9 x[8]         *              1             0             1 
+    10 x[9]         *              0             0             1 
+    11 x[10]        *              0             0             1 
+    12 x[11]        *              0             0             1 
+    13 x[12]        *              0             0             1 
+    14 x[13]        *              1             0             1 
+    15 x[14]        *              0             0             1 
+    16 x[15]        *              0             0             1 
+    17 x[16]        *              1             0             1 
+    18 x[17]        *              0             0             1 
+    19 x[18]        *              0             0             1 
+    20 x[19]        *              0             0             1 
+    21 x[20]        *              1             0             1 
+    22 x[21]        *              0             0             1 
+    23 x[22]        *              0             0             1 
+    24 x[23]        *              0             0             1 
+    25 x[24]        *              1             0             1 
+    26 x[25]        *              1             0             1 
+    27 x[26]        *              0             0             1 
+    28 x[27]        *              0             0             1 
+    29 x[28]        *              0             0             1 
+    30 x[29]        *              0             0             1 
+    31 x[30]        *              1             0             1 
+    32 x[31]        *              1             0             1 
+    33 x[32]        *              0             0             1 
+    34 x[33]        *              0             0             1 
+    35 x[34]        *              0             0             1 
+    36 x[35]        *              1             0             1 
+    37 x[36]        *              0             0             1 
+    38 x[37]        *              0             0             1 
+    39 x[38]        *              0             0             1 
+    40 x[39]        *              1             0             1 
+    41 x[40]        *              0             0             1 
+    42 x[41]        *              1             0             1 
+    43 x[42]        *              1             0             1 
+    44 x[43]        *              0             0             1 
+    45 x[44]        *              0             0             1 
+    46 x[45]        *              0             0             1 
+    47 x[46]        *              1             0             1 
+    48 x[47]        *              1             0             1 
+    49 x[48]        *              1             0             1 
+    50 x[49]        *              0             0             1 
+    51 x[50]        *              0             0             1 
+    52 x[51]        *              1             0             1 
+    53 x[52]        *              0             0             1 
+    54 x[53]        *              0             0             1 
+    55 x[54]        *              0             0             1 
+    56 x[55]        *              0             0             1 
+    57 x[56]        *              0             0             1 
+    58 x[57]        *              0             0             1 
+    59 x[58]        *              1             0             1 
+    60 x[59]        *              1             0             1 
+
+Integer feasibility conditions:
+
+KKT.PE: max.abs.err = 0.00e+00 on row 0
+        max.rel.err = 0.00e+00 on row 0
+        High quality
+
+KKT.PB: max.abs.err = 0.00e+00 on row 0
+        max.rel.err = 0.00e+00 on row 0
+        High quality
+
+End of output
