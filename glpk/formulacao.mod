@@ -1,7 +1,7 @@
 set V;
 /* itens */
 
-set E;
+set E dimen 2;
 
 param c;
 
@@ -13,7 +13,7 @@ param w{v in V};
 param p{v in V};
 /* valor de cada item */
 
-var x{v in V} >= 0;
+var x{v in V} >= 0 binary;
 /* presença de um item na mochila nesta solução */
 
 
