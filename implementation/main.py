@@ -47,17 +47,6 @@ while(lines[i] != ';\n'):
 
     i = i + 1
 
-# generate initial solution
-
-items.sort(key=lambda (a,b,c): float(b)/c, reverse=True)
-
-for i in range(0,number_of_items):
-    if (max_weight - knapsack_weight) < items[-1][WEIGHT]:
-        break
-    if items[i][WEIGHT] < (max_weight - knapsack_weight):
-        knapsack.append(items[i])
-        knapsack_weight += items[i][WEIGHT]
-
 ########################
 
 def basic_vns():
@@ -77,7 +66,27 @@ def neighborhood1(text):
 def neighborhood2(text):
     print "n2" + text
 
+def item_has_conflict(knapsack, item):
+    for i in knapsack:
+        if restrictions[i[NUM_ITEM]][item[NUM_ITEM]]:
+            return True
+    return False
+
+def knapsack_has_space(max_weight, knapsack_weight, item):
+    return item[WEIGHT] < (max_weight - knapsack_weight)
 ########################
+
+# generate initial solution
+
+items.sort(key=lambda (a,b,c): float(b)/c, reverse=True)
+
+for i in range(0,number_of_items):
+    if (max_weight - knapsack_weight) < items[-1][WEIGHT]:
+        break
+    if knapsack_has_space(max_weight, knapsack_weight, items[i]):
+        if item_has_conflict(knapsack, items[i]) == False:
+            knapsack.append(items[i])
+            knapsack_weight += items[i][WEIGHT]
 
 MAX_NUMBER_OF_ITERATIONS = 10
 NUMBER_OF_NEIGHBORHOODS = 3
