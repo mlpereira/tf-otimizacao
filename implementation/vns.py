@@ -27,8 +27,8 @@ def random_neighbour(knapsack, max_weight, knapsack_weight, items_to_remove, ite
         for i in range(0, items_to_remove):
             index = randint(0,len(knapsack) - 1)
             knapsack_weight -= knapsack[index][WEIGHT]
+            #print "Removeu item " + str(knapsack[index][NUM_ITEM])
             knapsack.pop(index)
-            #print "Removeu item " + str(index)
 
     #embaralha itens para adicionar itens aleatorios
     shuffle(items)
@@ -40,6 +40,8 @@ def random_neighbour(knapsack, max_weight, knapsack_weight, items_to_remove, ite
                 knapsack.append(item)
                 knapsack_weight += item[WEIGHT]
                 #print "Adicionou item " + str(item[NUM_ITEM])
+
+    #print knapsack
 
     return knapsack
 
@@ -53,24 +55,32 @@ def item_can_be_chosen(knapsack, item, restrictions):
 def knapsack_has_space(max_weight, knapsack_weight, item):
     return item[WEIGHT] <= (max_weight - knapsack_weight)
 
-def find_local_maximum(initial):
+def find_local_maximum(initial, max_weight, knapsack_weight, items, restrictions):
     initial_value = evaluate_solution(initial)
 
+    print "VALOR INICIAL: " + str(initial_value)
     biggest_solution = initial
     biggest_value = initial_value
 
     # supondo que usaremos o criterio 0 pra achar os vizinhos aqui
-    neighborhood = neighborhood0(initial)
+    neighborhood = []
+    for i in range(0, len(initial)**2):
+        vizinho = random_neighbour(initial, max_weight, knapsack_weight, 1, items, restrictions)
+        #print ("$$$$$$$$")
+        vizinho.sort(key=lambda (a,b,c): a)
+        #print vizinho
+        neighborhood.append(vizinho)
 
     for n in neighborhood:
         value = evaluate_solution(n)
+        print "Valor da vizinhanca " + str(value)
 
         if value > biggest_value:
             biggest_value = value
             biggest_solution = n
 
     if biggest_value > initial_value:
-        return find_local_maximum(biggest_solution)
+        return find_local_maximum(biggest_solution, max_weight, knapsack_weight, items, restrictions)
     else:
         return initial
 

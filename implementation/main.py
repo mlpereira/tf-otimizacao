@@ -10,7 +10,7 @@ PROFIT = 1
 WEIGHT = 2
 
 MAX_NUMBER_OF_ITERATIONS = 10
-NUMBER_OF_NEIGHBORHOODS = 3
+NUMBER_OF_NEIGHBORHOODS = 10
 
 # read filename from input
 
@@ -89,15 +89,15 @@ print_knapsack(knapsack)
 N = [neighborhood0, neighborhood1, neighborhood2]
 
 for i in range(0, MAX_NUMBER_OF_ITERATIONS):
-    k = 0
-    while (k < NUMBER_OF_NEIGHBORHOODS):
-        neighborhood = N[k](knapsack)
-        x1 = random_neighbor(neighborhood)
-
-        x2 = find_local_maximum(x1)
-
+    k = 1
+    while (k <= NUMBER_OF_NEIGHBORHOODS):
+        #print (k)
+        x1 = random_neighbour(knapsack, max_weight, knapsack_weight, k, items, restrictions)
+        #print ("2################")
+        x2 = find_local_maximum(x1, max_weight, knapsack_weight, items, restrictions)
+        #print ("3################")
         if (evaluate_solution(x2) > evaluate_solution(knapsack)):
             knapsack = x2
-            k = 0
+            k = 1
         else:
             k = k + 1
