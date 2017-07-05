@@ -10,7 +10,7 @@ PROFIT = 1
 WEIGHT = 2
 
 MAX_NUMBER_OF_ITERATIONS = 10
-NUMBER_OF_NEIGHBORHOODS = 10
+NUMBER_OF_NEIGHBORHOODS = 3
 
 # read filename from input
 
@@ -95,10 +95,9 @@ print knapsack_id_sum(knapsack)
 random_item_max_weight(items, 300)
 
 for i in range(0, MAX_NUMBER_OF_ITERATIONS):
-    print "i = " + str(i)
     k = 1
     while (k <= NUMBER_OF_NEIGHBORHOODS):
-        print (k)
+        print str(i) + " - " + str(k)
         # print("2222222222222")
         # print knapsack_id_sum(knapsack)
         if k < NUMBER_OF_NEIGHBORHOODS:
