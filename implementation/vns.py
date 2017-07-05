@@ -26,7 +26,7 @@ def item_has_conflict(knapsack, item, restrictions):
 def knapsack_has_space(max_weight, knapsack_weight, item):
     return item[WEIGHT] < (max_weight - knapsack_weight)
 
-def find_local_minimum(instance):
+def find_local_maximum(instance):
     return instance
 
 def evaluate_solution(knapsack):
