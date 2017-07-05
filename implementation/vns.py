@@ -31,8 +31,8 @@ def find_local_minimum(instance):
 
 def evaluate_solution(knapsack):
     value = 0
-    for i in range(0,len(knapsack)):
-        value += knapsack[i][PROFIT]
+    for item in knapsack:
+        value += item[PROFIT]
 
     return value
 
