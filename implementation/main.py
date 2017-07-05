@@ -78,7 +78,7 @@ for i in range(0,number_of_items):
     if (max_weight - knapsack_weight) < items[-1][WEIGHT]:
         break
     if knapsack_has_space(max_weight, knapsack_weight, items[i]):
-        if item_has_conflict(knapsack, items[i], restrictions) == False:
+        if item_can_be_chosen(knapsack, items[i], restrictions):
             knapsack.append(items[i])
             knapsack_weight += items[i][WEIGHT]
 
@@ -93,9 +93,9 @@ for i in range(0, MAX_NUMBER_OF_ITERATIONS):
     while (k < NUMBER_OF_NEIGHBORHOODS):
         neighborhood = N[k](knapsack)
         x1 = random_neighbor(neighborhood)
-        
+
         x2 = find_local_maximum(x1)
-        
+
         if (evaluate_solution(x2) > evaluate_solution(knapsack)):
             knapsack = x2
             k = 0
