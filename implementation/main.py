@@ -94,7 +94,6 @@ for i in range(0, MAX_NUMBER_OF_ITERATIONS):
         neighborhood = N[k](knapsack)
         x1 = random_neighbor(neighborhood)
         
-        # aqui deve encontrar um x'' maximo local proximo de x'
         x2 = find_local_maximum(x1)
         
         if (evaluate_solution(x2) > evaluate_solution(knapsack)):

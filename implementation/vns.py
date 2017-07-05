@@ -8,7 +8,7 @@ WEIGHT = 2
 
 def neighborhood0(array):
     return [array, array]
-
+    
 def neighborhood1(array):
     return [array, array, array]
 
@@ -26,14 +26,33 @@ def item_has_conflict(knapsack, item, restrictions):
 def knapsack_has_space(max_weight, knapsack_weight, item):
     return item[WEIGHT] < (max_weight - knapsack_weight)
 
-def find_local_maximum(instance):
-    return instance
-
+def find_local_maximum(initial):
+    initial_value = evaluate_solution(initial)
+    
+    biggest_solution = initial
+    biggest_value = initial_value
+    
+    # supondo que usaremos o criterio 0 pra achar os vizinhos aqui
+    neighborhood = neighborhood0(initial)
+    
+    for n in neighborhood:
+        value = evaluate_solution(n)
+        
+        if value > biggest_value:
+            biggest_value = value
+            biggest_solution = n
+    
+    if biggest_value > initial_value:
+        return find_local_maximum(biggest_solution)
+    else:
+        return initial
+        
+        
 def evaluate_solution(knapsack):
     value = 0
     for item in knapsack:
         value += item[PROFIT]
-
+    
     return value
 
 # other functions
