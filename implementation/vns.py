@@ -37,11 +37,12 @@ def random_neighbour(knapsack, max_weight, knapsack_weight, items_to_remove, ite
     #adiciona todos itens que conseguir
     for i in range(0, len(knapsack)):
         i = random_item_max_weight(items, max_weight - knapsack_weight)
-        if item_can_be_chosen(new_knapsack, i, restrictions):
-            if knapsack_has_space(max_weight, knapsack_weight, i):
-                new_knapsack.append(i)
-                knapsack_weight += i[WEIGHT]
-                #print "Adicionou item " + str(item[NUM_ITEM])
+        if i is not None:
+            if item_can_be_chosen(new_knapsack, i, restrictions):
+                if knapsack_has_space(max_weight, knapsack_weight, i):
+                    new_knapsack.append(i)
+                    knapsack_weight += i[WEIGHT]
+                    #print "Adicionou item " + str(item[NUM_ITEM])
 
     #print knapsack
 
@@ -57,9 +58,12 @@ def item_can_be_chosen(knapsack, item, restrictions):
 def random_item_max_weight(items, weight):
     items_that_fit = filter(lambda (a,b,c): c <= weight, items)
 
-    index = randint(0,len(items_that_fit) - 1)
+    if len(items_that_fit) > 0:
+        index = randint(0,len(items_that_fit) - 1)
 
-    return items_that_fit[index]
+        return items_that_fit[index]
+
+    return None
 
 def knapsack_has_space(max_weight, knapsack_weight, item):
     return item[WEIGHT] <= (max_weight - knapsack_weight)
