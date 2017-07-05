@@ -121,3 +121,6 @@ for i in range(0, MAX_NUMBER_OF_ITERATIONS):
             k = k + 1
 
 print_knapsack(knapsack)
+
+result = evaluate_solution(knapsack)
+print "\n\nSolution found: " + str(result)
