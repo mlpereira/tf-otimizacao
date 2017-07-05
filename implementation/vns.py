@@ -17,33 +17,34 @@ def neighborhood2(array):
     return [array, array, array, array]
 
 def random_neighbour(knapsack, max_weight, knapsack_weight, items_to_remove, items, restrictions):
-    if items_to_remove == 0 or items_to_remove >= len(knapsack):
+    new_knapsack = knapsack[:]
+    if items_to_remove == 0 or items_to_remove >= len(new_knapsack):
         #zera a mochila
-        knapsack = []
+        new_knapsack = []
         knapsack_weight = 0
         #print "Removeu todos itens da mochila"
     else:
         #remove items_to_remove itens da mochila
         for i in range(0, items_to_remove):
-            index = randint(0,len(knapsack) - 1)
-            knapsack_weight -= knapsack[index][WEIGHT]
+            index = randint(0,len(new_knapsack) - 1)
+            knapsack_weight -= new_knapsack[index][WEIGHT]
             #print "Removeu item " + str(knapsack[index][NUM_ITEM])
-            knapsack.pop(index)
+            new_knapsack.pop(index)
 
     #embaralha itens para adicionar itens aleatorios
     shuffle(items)
 
     #adiciona todos itens que conseguir
     for item in items:
-        if item_can_be_chosen(knapsack, item, restrictions):
+        if item_can_be_chosen(new_knapsack, item, restrictions):
             if knapsack_has_space(max_weight, knapsack_weight, item):
-                knapsack.append(item)
+                new_knapsack.append(item)
                 knapsack_weight += item[WEIGHT]
                 #print "Adicionou item " + str(item[NUM_ITEM])
 
     #print knapsack
 
-    return knapsack
+    return new_knapsack
 
 # knapsack functions
 def item_can_be_chosen(knapsack, item, restrictions):
@@ -58,7 +59,7 @@ def knapsack_has_space(max_weight, knapsack_weight, item):
 def find_local_maximum(initial, max_weight, knapsack_weight, items, restrictions):
     initial_value = evaluate_solution(initial)
 
-    print "VALOR INICIAL: " + str(initial_value)
+    #print "VALOR INICIAL: " + str(initial_value)
     biggest_solution = initial
     biggest_value = initial_value
 
@@ -67,21 +68,23 @@ def find_local_maximum(initial, max_weight, knapsack_weight, items, restrictions
     for i in range(0, len(initial)**2):
         vizinho = random_neighbour(initial, max_weight, knapsack_weight, 1, items, restrictions)
         #print ("$$$$$$$$")
-        vizinho.sort(key=lambda (a,b,c): a)
+        #vizinho.sort(key=lambda (a,b,c): a)
         #print vizinho
         neighborhood.append(vizinho)
 
     for n in neighborhood:
         value = evaluate_solution(n)
-        print "Valor da vizinhanca " + str(value)
+        #print "Valor da vizinhanca " + str(value)
 
         if value > biggest_value:
             biggest_value = value
             biggest_solution = n
 
     if biggest_value > initial_value:
+        #print "Recursionou"
         return find_local_maximum(biggest_solution, max_weight, knapsack_weight, items, restrictions)
     else:
+        #print initial_value
         return initial
 
 
@@ -98,6 +101,13 @@ def calculate_knapsack_weight(knapsack):
         weight += item[WEIGHT]
 
     return weight
+
+def knapsack_id_sum(knapsack):
+    id_sum = 0
+    for item in knapsack:
+        id_sum += item[NUM_ITEM]
+
+    return id_sum
 
 # other functions
 

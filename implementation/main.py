@@ -87,17 +87,37 @@ print_knapsack(knapsack)
 # execute search algorithm with vns meta-heuristic
 
 N = [neighborhood0, neighborhood1, neighborhood2]
+print evaluate_solution(knapsack)
+
+# print("1111111111111")
+print knapsack_id_sum(knapsack)
 
 for i in range(0, MAX_NUMBER_OF_ITERATIONS):
     k = 1
     while (k <= NUMBER_OF_NEIGHBORHOODS):
-        #print (k)
+        print (k)
+        # print("2222222222222")
+        # print knapsack_id_sum(knapsack)
         x1 = random_neighbour(knapsack, max_weight, knapsack_weight, k, items, restrictions)
-        #print ("2################")
+        #print ("Entrou")
+        # print("3333333333333")
+        # print knapsack_id_sum(knapsack)
         x2 = find_local_maximum(x1, max_weight, knapsack_weight, items, restrictions)
-        #print ("3################")
+        print("JORGE")
+        # print knapsack_id_sum(knapsack)
+        #print ("Saiu")
+        # print ("################")
+        # print knapsack_id_sum(x2)
+        # print evaluate_solution(x2)
+        # print knapsack_id_sum(knapsack)
+        # print evaluate_solution(knapsack)
+        # print ("XXXXXXXXXXXXXXXX")
         if (evaluate_solution(x2) > evaluate_solution(knapsack)):
             knapsack = x2
+            print "Melhorou com k = " + str(k)
+            print evaluate_solution(x2)
             k = 1
         else:
             k = k + 1
+
+print_knapsack(knapsack)
