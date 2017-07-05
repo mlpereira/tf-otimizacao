@@ -96,7 +96,7 @@ def find_local_maximum(initial, max_weight, knapsack_weight, items, restrictions
     # supondo que usaremos o criterio 0 pra achar os vizinhos aqui
     neighborhood = []
 
-    for i in range(0, len(initial)**2):
+    for i in range(0, max(len(initial)*2, 100)):
         vizinho = random_neighbour(initial, max_weight, calculate_knapsack_weight(initial), 1, items, restrictions)
         #print ("$$$$$$$$")
         #vizinho.sort(key=lambda (a,b,c): a)
