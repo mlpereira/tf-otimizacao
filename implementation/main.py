@@ -19,10 +19,23 @@ filename = sys.argv[1]
 with open(filename) as f:
     lines = f.readlines()
 
+line_num = 0
+
+def find_line_with_numbers(line_num):
+    while len(re.findall(r'\d+', lines[line_num])) == 0:
+        line_num += 1
+    return line_num
+
 # vars
 
-number_of_items = int(re.findall(r'\d+', lines[0])[0])
-max_weight = int(re.findall(r'\d+', lines[1])[0])
+line_num = find_line_with_numbers(line_num)
+
+number_of_items = int(re.findall(r'\d+', lines[line_num])[0])
+line_num += 1
+
+line_num = find_line_with_numbers(line_num)
+
+max_weight = int(re.findall(r'\d+', lines[line_num])[0])
 
 items = []
 restrictions = numpy.zeros(shape=(number_of_items, number_of_items))
@@ -31,20 +44,22 @@ knapsack_weight = 0
 
 # read items
 
-i = 3
-while(lines[i] != ';\n'):
-    regex_result = re.findall(r'\d+', lines[i])
+line_num += 1
+line_num = find_line_with_numbers(line_num)
+
+while(lines[line_num] != ';\n'):
+    regex_result = re.findall(r'\d+', lines[line_num])
     item = (int(regex_result[0]), int(regex_result[1]), int(regex_result[2]))
     items.append(item)
 
-    i = i + 1
+    line_num += 1
 
 # read restrictions
 
-i = i + 3
+line_num = find_line_with_numbers(line_num)
 
-while(lines[i] != ';\n'):
-    regex_result = re.findall(r'\d+', lines[i])
+while(lines[line_num] != ';\n'):
+    regex_result = re.findall(r'\d+', lines[line_num])
 
     line = int(regex_result[0])
     column = int(regex_result[1])
@@ -52,7 +67,7 @@ while(lines[i] != ';\n'):
     restrictions[line][column] = 1
     restrictions[column][line] = 1
 
-    i = i + 1
+    line_num += 1
 
 
 # generate initial solution
@@ -67,6 +82,7 @@ for i in range(0,number_of_items):
             knapsack.append(items[i])
             knapsack_weight += items[i][WEIGHT]
 
+print_knapsack(knapsack)
 
 # execute search algorithm with vns meta-heuristic
 

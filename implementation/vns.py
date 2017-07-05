@@ -33,12 +33,21 @@ def evaluate_solution(knapsack):
     value = 0
     for i in range(0,len(knapsack)):
         value += knapsack[i][PROFIT]
-    
+
     return value
-    
+
 # other functions
+
+def print_knapsack(knapsack):
+    total_weight = 0
+    total_profit = 0
+    for item in knapsack:
+        total_weight += item[WEIGHT]
+        total_profit += item[PROFIT]
+        print "Id: " + str(item[NUM_ITEM]) + " - Peso: " + str(item[WEIGHT]) + " - Lucro: " + str(item[PROFIT])
+    print "########################################################"
+    print "Peso total: " + str(total_weight) + " - Lucro total: " + str(total_profit)
 
 def random_neighbor(neighborhood):
     index = randint(0,len(neighborhood) - 1)
     return neighborhood[index]
-    
