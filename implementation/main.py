@@ -73,6 +73,16 @@ for i in range(0,number_of_items):
 N = [neighborhood0, neighborhood1, neighborhood2]
 
 for i in range(0, MAX_NUMBER_OF_ITERATIONS):
-    for k in range(0, NUMBER_OF_NEIGHBORHOODS):
+    k = 0
+    while (k < NUMBER_OF_NEIGHBORHOODS):
         neighborhood = N[k](knapsack)
-        possible_solution = random_neighbor(neighborhood)
+        x1 = random_neighbor(neighborhood)
+        
+        # aqui deve encontrar um x'' minimo local proximo de x' (possible_solution)
+        x2 = find_local_minimum(x1)
+        
+        if (evaluate_solution(x2) > evaluate_solution(x1)):
+            knapsack = x2
+            k = 0
+        else:
+            k = k + 1

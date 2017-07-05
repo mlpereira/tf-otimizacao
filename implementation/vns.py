@@ -15,7 +15,6 @@ def neighborhood1(array):
 def neighborhood2(array):
     return [array, array, array, array]
 
-    
 # knapsack functions
 
 def item_has_conflict(knapsack, item, restrictions):
@@ -27,9 +26,19 @@ def item_has_conflict(knapsack, item, restrictions):
 def knapsack_has_space(max_weight, knapsack_weight, item):
     return item[WEIGHT] < (max_weight - knapsack_weight)
 
+def find_local_minimum(instance):
+    return instance
+
+def evaluate_solution(knapsack):
+    value = 0
+    for i in range(0,len(knapsack)):
+        value += knapsack[i][PROFIT]
+    
+    return value
     
 # other functions
 
 def random_neighbor(neighborhood):
     index = randint(0,len(neighborhood) - 1)
     return neighborhood[index]
+    
