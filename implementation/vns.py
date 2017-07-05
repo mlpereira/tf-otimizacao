@@ -35,11 +35,12 @@ def random_neighbour(knapsack, max_weight, knapsack_weight, items_to_remove, ite
     shuffle(items)
 
     #adiciona todos itens que conseguir
-    for item in items:
-        if item_can_be_chosen(new_knapsack, item, restrictions):
-            if knapsack_has_space(max_weight, knapsack_weight, item):
-                new_knapsack.append(item)
-                knapsack_weight += item[WEIGHT]
+    for i in range(0, len(knapsack)):
+        i = random_item_max_weight(items, max_weight - knapsack_weight)
+        if item_can_be_chosen(new_knapsack, i, restrictions):
+            if knapsack_has_space(max_weight, knapsack_weight, i):
+                new_knapsack.append(i)
+                knapsack_weight += i[WEIGHT]
                 #print "Adicionou item " + str(item[NUM_ITEM])
 
     #print knapsack
@@ -53,6 +54,13 @@ def item_can_be_chosen(knapsack, item, restrictions):
             return False
     return True
 
+def random_item_max_weight(items, weight):
+    items_that_fit = filter(lambda (a,b,c): c <= weight, items)
+
+    index = randint(0,len(items_that_fit) - 1)
+
+    return items_that_fit[index]
+
 def knapsack_has_space(max_weight, knapsack_weight, item):
     return item[WEIGHT] <= (max_weight - knapsack_weight)
 
@@ -65,8 +73,9 @@ def find_local_maximum(initial, max_weight, knapsack_weight, items, restrictions
 
     # supondo que usaremos o criterio 0 pra achar os vizinhos aqui
     neighborhood = []
+
     for i in range(0, len(initial)**2):
-        vizinho = random_neighbour(initial, max_weight, knapsack_weight, 1, items, restrictions)
+        vizinho = random_neighbour(initial, max_weight, calculate_knapsack_weight(initial), 1, items, restrictions)
         #print ("$$$$$$$$")
         #vizinho.sort(key=lambda (a,b,c): a)
         #print vizinho
@@ -74,6 +83,7 @@ def find_local_maximum(initial, max_weight, knapsack_weight, items, restrictions
 
     for n in neighborhood:
         value = evaluate_solution(n)
+        #print value
         #print "Valor da vizinhanca " + str(value)
 
         if value > biggest_value:
@@ -81,8 +91,8 @@ def find_local_maximum(initial, max_weight, knapsack_weight, items, restrictions
             biggest_solution = n
 
     if biggest_value > initial_value:
-        #print "Recursionou"
-        return find_local_maximum(biggest_solution, max_weight, knapsack_weight, items, restrictions)
+        print "Recursionou: " + str(biggest_value)
+        return find_local_maximum(biggest_solution, max_weight, calculate_knapsack_weight(biggest_solution), items, restrictions)
     else:
         #print initial_value
         return initial

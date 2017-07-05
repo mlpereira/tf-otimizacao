@@ -92,18 +92,24 @@ print evaluate_solution(knapsack)
 # print("1111111111111")
 print knapsack_id_sum(knapsack)
 
+random_item_max_weight(items, 300)
+
 for i in range(0, MAX_NUMBER_OF_ITERATIONS):
+    print "i = " + str(i)
     k = 1
     while (k <= NUMBER_OF_NEIGHBORHOODS):
         print (k)
         # print("2222222222222")
         # print knapsack_id_sum(knapsack)
-        x1 = random_neighbour(knapsack, max_weight, knapsack_weight, k, items, restrictions)
+        if k < NUMBER_OF_NEIGHBORHOODS:
+            x1 = random_neighbour(knapsack, max_weight, knapsack_weight, k, items, restrictions)
+        else:
+            x1 = random_neighbour(knapsack, max_weight, knapsack_weight, 0, items, restrictions)
         #print ("Entrou")
         # print("3333333333333")
         # print knapsack_id_sum(knapsack)
         x2 = find_local_maximum(x1, max_weight, knapsack_weight, items, restrictions)
-        print("JORGE")
+        #print("JORGE")
         # print knapsack_id_sum(knapsack)
         #print ("Saiu")
         # print ("################")
@@ -114,6 +120,7 @@ for i in range(0, MAX_NUMBER_OF_ITERATIONS):
         # print ("XXXXXXXXXXXXXXXX")
         if (evaluate_solution(x2) > evaluate_solution(knapsack)):
             knapsack = x2
+            knapsack_weight = calculate_knapsack_weight(knapsack)
             print "Melhorou com k = " + str(k)
             print evaluate_solution(x2)
             k = 1
