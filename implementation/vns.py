@@ -31,18 +31,33 @@ def random_neighbour(knapsack, max_weight, knapsack_weight, items_to_remove, ite
             #print "Removeu item " + str(knapsack[index][NUM_ITEM])
             new_knapsack.pop(index)
 
-    #embaralha itens para adicionar itens aleatorios
-    shuffle(items)
-
+    possible_items = items_that_can_be_chosen(new_knapsack, max_weight, knapsack_weight, items, restrictions)
     #adiciona todos itens que conseguir
-    for i in range(0, len(knapsack)):
-        i = random_item_max_weight(items, max_weight - knapsack_weight)
-        if i is not None:
-            if item_can_be_chosen(new_knapsack, i, restrictions):
-                if knapsack_has_space(max_weight, knapsack_weight, i):
-                    new_knapsack.append(i)
-                    knapsack_weight += i[WEIGHT]
-                    #print "Adicionou item " + str(item[NUM_ITEM])
+    #items1
+    while possible_items != []:
+        index = randint(0,len(possible_items) - 1)
+        new_knapsack.append(possible_items[index])
+        knapsack_weight += possible_items[index][WEIGHT]
+        possible_items = items_that_can_be_chosen(new_knapsack, max_weight, knapsack_weight, items, restrictions)
+        #print "Adicionou item " + str(item[NUM_ITEM])
+
+    #items2
+    # shuffle(items)
+    #
+    # for item in items:
+    #     if item_can_be_chosen(new_knapsack, item, restrictions):
+    #         new_knapsack.append(item)
+    #         knapsack_weight += item[WEIGHT]
+
+    #items3
+    # for i in range(0, len(knapsack)):
+    #     i = random_item_max_weight(items, max_weight - knapsack_weight)
+    #     if i is not None:
+    #         if item_can_be_chosen(new_knapsack, i, restrictions):
+    #             if knapsack_has_space(max_weight, knapsack_weight, i):
+    #                 new_knapsack.append(i)
+    #                 knapsack_weight += i[WEIGHT]
+    #                 #print "Adicionou item " + str(item[NUM_ITEM])
 
     #print knapsack
 
@@ -54,6 +69,9 @@ def item_can_be_chosen(knapsack, item, restrictions):
         if restrictions[i[NUM_ITEM]][item[NUM_ITEM]] or i[0] == item[0]:
             return False
     return True
+
+def items_that_can_be_chosen(knapsack, max_weight, knapsack_weight, items, restrictions):
+    return filter(lambda item: item_can_be_chosen(knapsack, item, restrictions) and knapsack_has_space(max_weight, knapsack_weight, item), items)
 
 def random_item_max_weight(items, weight):
     items_that_fit = filter(lambda (a,b,c): c <= weight, items)
@@ -78,7 +96,7 @@ def find_local_maximum(initial, max_weight, knapsack_weight, items, restrictions
     # supondo que usaremos o criterio 0 pra achar os vizinhos aqui
     neighborhood = []
 
-    for i in range(0, len(initial)**2):
+    for i in range(0, max(len(initial)*2, 100)):
         vizinho = random_neighbour(initial, max_weight, calculate_knapsack_weight(initial), 1, items, restrictions)
         #print ("$$$$$$$$")
         #vizinho.sort(key=lambda (a,b,c): a)
@@ -95,7 +113,7 @@ def find_local_maximum(initial, max_weight, knapsack_weight, items, restrictions
             biggest_solution = n
 
     if biggest_value > initial_value:
-        print "Recursionou: " + str(biggest_value)
+        # print "Recursionou: " + str(biggest_value)
         return find_local_maximum(biggest_solution, max_weight, calculate_knapsack_weight(biggest_solution), items, restrictions)
     else:
         #print initial_value

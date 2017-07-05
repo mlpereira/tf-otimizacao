@@ -10,7 +10,7 @@ PROFIT = 1
 WEIGHT = 2
 
 MAX_NUMBER_OF_ITERATIONS = 10
-NUMBER_OF_NEIGHBORHOODS = 10
+NUMBER_OF_NEIGHBORHOODS = 3
 
 # read filename from input
 
@@ -82,23 +82,22 @@ for i in range(0,number_of_items):
             knapsack.append(items[i])
             knapsack_weight += items[i][WEIGHT]
 
-print_knapsack(knapsack)
+# print_knapsack(knapsack)
 
 # execute search algorithm with vns meta-heuristic
 
 N = [neighborhood0, neighborhood1, neighborhood2]
-print evaluate_solution(knapsack)
+#print evaluate_solution(knapsack)
 
 # print("1111111111111")
-print knapsack_id_sum(knapsack)
+#print knapsack_id_sum(knapsack)
 
 random_item_max_weight(items, 300)
 
 for i in range(0, MAX_NUMBER_OF_ITERATIONS):
-    print "i = " + str(i)
     k = 1
     while (k <= NUMBER_OF_NEIGHBORHOODS):
-        print (k)
+        # print str(i) + " - " + str(k)
         # print("2222222222222")
         # print knapsack_id_sum(knapsack)
         if k < NUMBER_OF_NEIGHBORHOODS:
@@ -121,13 +120,11 @@ for i in range(0, MAX_NUMBER_OF_ITERATIONS):
         if (evaluate_solution(x2) > evaluate_solution(knapsack)):
             knapsack = x2
             knapsack_weight = calculate_knapsack_weight(knapsack)
-            print "Melhorou com k = " + str(k)
-            print evaluate_solution(x2)
+            # print "Melhorou com k = " + str(k)
+            # print evaluate_solution(x2)
             k = 1
         else:
             k = k + 1
-
-print_knapsack(knapsack)
-
-result = evaluate_solution(knapsack)
-print "\n\nSolution found: " + str(result)
+print "Profit: " + str(evaluate_solution(knapsack))
+print "Weight: " + str(calculate_knapsack_weight(knapsack))
+# print_knapsack(knapsack)
